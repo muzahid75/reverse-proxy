@@ -1,7 +1,10 @@
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+var cors = require('cors');
 
 const app = express();
+
+app.use(cors())
 
 // Proxy to your insecure HTTP API
 app.use('/api', createProxyMiddleware({
