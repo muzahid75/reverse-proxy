@@ -13,6 +13,8 @@ app.use('/api', createProxyMiddleware({
 //   pathRewrite: { '^/api': '' }, // optional: remove /api prefix
   onProxyReq: (proxyReq, req, res) => {
     proxyReq.removeHeader('origin'); // Remove Origin header
+    proxyReq.removeHeader('referer');
+    proxyReq.removeHeader('user-agent');
   }
 }));
 
