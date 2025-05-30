@@ -11,6 +11,9 @@ app.use('/api', createProxyMiddleware({
   target: 'http://35.177.100.215:8002',
   changeOrigin: true,
 //   pathRewrite: { '^/api': '' }, // optional: remove /api prefix
+  onProxyReq: (proxyReq, req, res) => {
+    proxyReq.removeHeader('origin'); // Remove Origin header
+  }
 }));
 
 const PORT = 3000;
